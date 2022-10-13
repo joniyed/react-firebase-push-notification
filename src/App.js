@@ -14,15 +14,6 @@ function App() {
   const [isTokenFound, setTokenFound] = useState(false);
   fetchToken(setTokenFound);
 
-  // React.useEffect(()=>{
-  //   const msg=firebase.messaging();
-  //   msg.requestPermission().then(()=>{
-  //     return msg.getToken();
-  //   }).then((data)=>{
-  //     console.warn("token",data)
-  //   })
-  // })
-
   onMessageListener()
     .then(payload => {
       setNotification({ title: payload.data.title, body: payload.data.body })
