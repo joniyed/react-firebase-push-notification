@@ -16,7 +16,15 @@ function App() {
 
   onMessageListener()
     .then(payload => {
-      setNotification({ title: payload.data.title, body: payload.data.body })
+
+      let notificationTitle = payload.data.title;
+      let notificationOptions = payload.data.body;
+      if (payload.notification) {
+        notificationTitle = payload.notification.title;
+        notificationOptions = payload.notification.body;
+      }
+
+      setNotification({ title: notificationTitle, body: notificationOptions })
       setShow(true);
     })
     .catch(err => {
